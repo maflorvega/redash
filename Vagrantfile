@@ -7,5 +7,9 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "redash/dev"
   config.vm.synced_folder "./", "/opt/redash/current"
-  config.vm.network "forwarded_port", guest: 5000, host: 9001
+  config.vm.network "forwarded_port", guest: 5000, host: 1234
+  config.vm.provider "virtualbox" do |v|
+   v.memory = 1024
+   v.cpus = 2
+  end
 end
